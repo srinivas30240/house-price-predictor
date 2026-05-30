@@ -70,9 +70,9 @@ jobs:
             --default-artifact-root /tmp/mlruns
       - name: Train the model
         run: |
-          python src/models/train.py \
+          python src/models/train_model.py \
           --config configs/model_config.yaml \
           --data data/processed/feature_house_data.csv \
-          --models_dir models/ \
+          --models_dir models \
           --mlflow_tracking_uri http://localhost:5555
       
