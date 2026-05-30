@@ -60,3 +60,19 @@ jobs:
           git add -f data/processed/cleaned_house_data.csv data/processed/feature_house_data.csv models/preprocessor.pkl
           git commit -m "Add processed datasets" || echo "No changes to commit"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+
+      - name: add the Mlflow tracking URI
+        run: |
+          docker pull ghcr.io/mlflow/mlflow:latest \
+          docker run -d -p 5555:5000 --name Mlflow ghcr.io/mlflow/mlflow:latest \
+          mlflow server --host 0.0.0.0 \
+          --backend-store-uri sqlite:///mlflow.db \
+          --default-artifact-root /tmp/mlruns
+      - name: Train the model
+        run: |
+          python src/models/train.py \
+          --config configs/model_config.yaml \
+          --data data/processed/feature_house_data.csv \
+          --models_dir models/ \
+          --mlflow_tracking_uri http://localhost:5555
+      
