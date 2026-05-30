@@ -75,5 +75,10 @@ jobs:
           --data data/processed/feature_house_data.csv \
           --models-dir models/ \
           --mlflow-tracking-uri http://localhost:5555
+
+      - name: Stop the Mlflow container
+        run: |
+          docker stop Mlflow
+          docker rm Mlflow  
           
       
