@@ -41,3 +41,12 @@ jobs:
           --input data/processed/cleaned_house_data.csv \
           --output data/processed/feature_house_data.csv \
           --preprocessor models/preprocessor.pkl
+            - name: Commit processed data
+
+      - name: Commit processed data
+        run: |
+          git config --global user.name "srinivas30240"
+          git config --global user.email "srinivas.boga@gmail.com"
+          git add data/processed/cleaned_house_data.csv data/processed/feature_house_data.csv
+          git commit -m "Add processed datasets"
+          git push
