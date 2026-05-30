@@ -11,8 +11,7 @@ on:
       - main
 
 permissions:
-  contents: write   # 👈 allows workflow to push commits
-
+  contents: write   
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,7 +19,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}   # 👈 authenticated checkout
+          token: ${{ secrets.GITHUB_TOKEN }}   
 
       - name: Set up Python
         uses: actions/setup-python@v6
