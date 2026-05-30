@@ -74,5 +74,6 @@ jobs:
           --config configs/model_config.yaml \
           --data data/processed/feature_house_data.csv \
           --models-dir models/ \
-          --mlflow_tracking_uri http://localhost:5555
+          --mlflow-tracking-uri http://localhost:5555
+          
       
