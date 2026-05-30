@@ -48,3 +48,5 @@ jobs:
           git add data/processed/cleaned_house_data.csv data/processed/feature_house_data.csv
           git commit -m "Add processed datasets"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
