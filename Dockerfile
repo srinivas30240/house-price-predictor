@@ -15,7 +15,7 @@ RUN pip install --upgrade pip setuptools wheel
 # Install Python packages
 RUN pip install --no-cache-dir -r requirements.txt
 RUN mkdir -p models/trained
-COPY models/trained/*.pkl models/trained/
+COPY models/trained/ models/trained/
 
 EXPOSE 8020
 
