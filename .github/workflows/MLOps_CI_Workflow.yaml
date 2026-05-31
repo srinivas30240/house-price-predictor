@@ -102,7 +102,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: {{ DOCKERHUB_USERNAME }}/fastapi: {{ github.sha }}
+          tags: ${{ DOCKERHUB_USERNAME }}/fastapi:${{ github.sha }}
           context: "."
           file: Dockerfile
           
