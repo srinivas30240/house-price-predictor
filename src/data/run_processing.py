@@ -70,7 +70,7 @@ def process_data(input_file, output_file):
     df = load_data(input_file)
     logger.info(f"Loaded data with shape: {df.shape}")
     
-    # Clean data
+    # Clean data 
     df_cleaned = clean_data(df)
     
     # Save processed data
