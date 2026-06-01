@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from prometheus_fastapi_instrumentator import Instrumentator
 from inference import predict_price, batch_predict
 from schemas import HousePredictionRequest, PredictionResponse
+
 
 # Initialize FastAPI app with metadata
 app = FastAPI(
@@ -22,6 +24,8 @@ app = FastAPI(
         "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
     },
 )
+
+Instrumentator().instrument(app).expose(app)
 
 # Add CORS middleware
 app.add_middleware(
